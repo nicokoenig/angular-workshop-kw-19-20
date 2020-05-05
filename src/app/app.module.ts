@@ -5,18 +5,12 @@ import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
 import { AboutModule } from './about/about.module';
 import { NavigationComponent } from './navigation/navigation.component';
+import { InfoBoxComponent } from './info-box/info-box.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavigationComponent
-  ],
-  imports: [
-    BrowserModule,
-    BooksModule,
-    AboutModule
-  ],
+  declarations: [AppComponent, NavigationComponent, InfoBoxComponent],
+  imports: [BrowserModule, BooksModule, AboutModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
