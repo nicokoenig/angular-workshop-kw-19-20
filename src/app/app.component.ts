@@ -9,4 +9,8 @@ export class AppComponent {
   color = 'hotpink';
 
   title = 'books-app';
+
+  log(message: string) {
+    console.log(message);
+  }
 }
