@@ -1,19 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Book, BookDataService } from '../books/book-data.service';
-import { debounceTime, delay } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'ba-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
   books: Book[] = [];
 
-  constructor(public bookData: BookDataService) {
-    this.bookData.getBooks().subscribe((books) => {
+  subscription: Subscription = Subscription.EMPTY;
+
+  constructor(public bookData: BookDataService) {}
+
+  ngOnInit(): void {
+    this.subscription = this.bookData.getBooks().subscribe((books) => {
       this.books = books;
     });
   }
 
-  ngOnInit(): void {}
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

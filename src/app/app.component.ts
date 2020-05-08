@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   color = 'hotpink';
 
+  visible = true;
+
   title = 'books-app';
 
   log(message: string) {
