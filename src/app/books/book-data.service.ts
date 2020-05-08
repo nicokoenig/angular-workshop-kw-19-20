@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export interface Book {
   title: string;
@@ -10,24 +11,11 @@ export interface Book {
   providedIn: 'root',
 })
 export class BookDataService {
-  private books: Book[] = [
-    {
-      title: 'Design Patterns',
-      subtitle: 'Elements of Reusable Object-Oriented Software',
-    },
-    {
-      title: 'REST und HTTP',
-      subtitle: 'Entwicklung und Integration nach dem Architekturstil des Web',
-    },
-    {
-      title: 'Eloquent JavaScript',
-      subtitle: 'A Modern Introduction to Programming',
-    },
-  ];
+  private baseUrl = 'http://localhost:4730';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getBooks(): Observable<Book[]> {
-    return of(this.books);
+    return this.http.get<Book[]>(`${this.baseUrl}/books`);
   }
 }
