@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 export interface Book {
   title: string;
   subtitle: string;
+  isbn: string;
+  abstract: string;
 }
 
 @Injectable({
@@ -17,5 +19,9 @@ export class BookDataService {
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/books`);
+  }
+
+  getBookByIsbn(isbn: string): Observable<Book> {
+    return this.http.get<Book>(`${this.baseUrl}/books/${isbn}`);
   }
 }
