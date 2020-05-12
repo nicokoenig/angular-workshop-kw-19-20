@@ -1,5 +1,9 @@
-<p *ngIf="books.length === 0">Hey, es gibt keine Bücher 🧐</p>
+<p *ngIf="(books$ | async)?.length === 0">
+  Hey, es gibt keine Bücher 🧐
+</p>
 
 <ul>
-  <li *ngFor="let book of books">{{ book.title }}: {{ book.subtitle }}</li>
+  <li *ngFor="let book of books$ | async">
+    {{ book.title }}: {{ book.subtitle }}
+  </li>
 </ul>
