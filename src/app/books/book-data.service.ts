@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { BooksModule } from './books.module';
 
 export interface Book {
   title: string;
@@ -9,13 +10,13 @@ export interface Book {
   abstract: string;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class BookDataService {
   private baseUrl = 'http://localhost:4730';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log('🎉');
+  }
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/books`);

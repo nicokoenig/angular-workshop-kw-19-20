@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Book, BookDataService } from '../books/book-data.service';
+import { Book, BookDataService } from '../book-data.service';
 import { Subscription, Observable } from 'rxjs';
 @Component({
   selector: 'ba-book-list',
