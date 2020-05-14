@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BookDataService, Book } from '../book-data.service';
 import { map, switchMap } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'ba-book-edit',
@@ -27,4 +28,8 @@ export class BookEditComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  save(formValues: Partial<Book>) {
+    console.log(formValues);
+  }
 }

@@ -8,6 +8,10 @@ export interface Book {
   subtitle: string;
   isbn: string;
   abstract: string;
+  author: {
+    name: string;
+    url: string;
+  };
 }
 
 @Injectable()

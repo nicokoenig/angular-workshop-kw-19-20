@@ -1,6 +1,6 @@
 <ng-container *ngIf="book">
-  <form #form="ngForm">
-    <label for="titler">Titel</label>
+  <form #form="ngForm" (ngSubmit)="save(form.value)">
+    <label for="title">Titel</label>
     <input
       type="text"
       name="title"
@@ -8,7 +8,49 @@
       [(ngModel)]="book.title"
       required
       autocomplete="off"
+      #title="ngModel"
     />
+    <div class="hint" [hidden]="!title.errors?.required || title.pristine">
+      Bitte geben Sie den Titel an 👆
+    </div>
+
+    <label for="abstract">Abstract</label>
+    <textarea
+      name="abstract"
+      id="abstract"
+      cols="30"
+      rows="10"
+      [(ngModel)]="book.abstract"
+      required
+      minlength="5"
+      #abstract="ngModel"
+    ></textarea>
+    <div
+      class="hint"
+      [hidden]="!abstract.errors?.required || abstract.pristine"
+    >
+      Bitte geben Sie den Abstract an 👆
+    </div>
+    <div
+      class="hint"
+      [hidden]="!abstract.errors?.minlength || abstract.pristine"
+    >
+      Bitte geben mindestens 5 Zeichen an 👆
+    </div>
+
+    <label for="author">Author</label>
+    <input
+      type="text"
+      name="name"
+      id="author"
+      [(ngModel)]="book.author"
+      required
+      autocomplete="off"
+      #author="ngModel"
+    />
+    <div class="hint" [hidden]="!author.errors?.required || author.pristine">
+      Bitte geben Sie den Author an 👆
+    </div>
 
     <button type="submit" [disabled]="form.invalid">Speichern</button>
   </form>

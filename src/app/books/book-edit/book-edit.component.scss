@@ -1,0 +1,16 @@
+form {
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-gap: 1rem;
+}
+
+.hint {
+  border: 1px solid red;
+  grid-column: 1 / 3;
+}
+
+.ng-invalid.ng-touched {
+  border-color: red;
+  outline-color: red;
+}
