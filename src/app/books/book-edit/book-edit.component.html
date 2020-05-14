@@ -1,0 +1,21 @@
+<ng-container *ngIf="book">
+  <form #form="ngForm">
+    <label for="titler">Titel</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      [(ngModel)]="book.title"
+      required
+      autocomplete="off"
+    />
+
+    <button type="submit" [disabled]="form.invalid">Speichern</button>
+  </form>
+
+  <pre>
+      {{ form.value | json }}
+  </pre>
+
+  <a routerLink="..">Back to details</a>
+</ng-container>
