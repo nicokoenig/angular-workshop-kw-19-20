@@ -2,6 +2,8 @@
   Hey, es gibt keine Bücher 🧐
 </p>
 
+<a routerLink="new">Neues Buch anlegen</a>
+
 <ul>
   <li *ngFor="let book of books$ | async">
     {{ book.title }}: {{ book.subtitle }}

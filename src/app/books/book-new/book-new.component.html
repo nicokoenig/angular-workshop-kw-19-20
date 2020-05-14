@@ -1,0 +1,17 @@
+<p>book-new works!</p>
+
+<form [formGroup]="form" (ngSubmit)="saveNewBook()">
+  <label for="title">Titel</label><br />
+  <input type="text" id="title" formControlName="title" autocomplete="off" />
+  <br />
+  <div
+    [hidden]="
+      !form.get('title')?.hasError('required') || form.get('title')?.pristine
+    "
+  >
+    Titel ist aber doch required!!!111 👆
+  </div>
+
+  <br />
+  <button type="submit" [disabled]="form.invalid">Speichern</button>
+</form>
