@@ -7,11 +7,12 @@ import { BooksComponent } from './books/books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDataService } from './book-data.service';
+import { ConfirmCandeactivateGuard } from './confirm-candeactivate.guard';
 
 @NgModule({
   declarations: [BooksComponent, BookDetailComponent, BookListComponent],
   imports: [CommonModule, HttpClientModule, BooksRoutingModule],
-  providers: [BookDataService],
+  providers: [BookDataService, ConfirmCandeactivateGuard],
   exports: [BooksComponent],
 })
 export class BooksModule {}

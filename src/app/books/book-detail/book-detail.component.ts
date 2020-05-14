@@ -10,6 +10,7 @@ import { map, switchMap } from 'rxjs/operators';
 })
 export class BookDetailComponent implements OnInit {
   book: Book | undefined;
+  canLeave = false;
 
   constructor(
     private route: ActivatedRoute,

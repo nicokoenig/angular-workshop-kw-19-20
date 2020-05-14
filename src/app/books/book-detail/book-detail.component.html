@@ -2,4 +2,12 @@
   <h3>{{ book.title }}</h3>
   <h4>{{ book.subtitle }}</h4>
   <p>{{ book.abstract }}</p>
+  <input
+    type="checkbox"
+    [checked]="canLeave"
+    (change)="canLeave = !canLeave"
+    name=""
+    id=""
+  />
+  <a routerLink="edit">Edit</a>
 </ng-container>
