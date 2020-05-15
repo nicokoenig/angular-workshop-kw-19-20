@@ -4,7 +4,7 @@
 
 <a routerLink="new">Neues Buch anlegen</a>
 
-<ul>
+<ul class="pink">
   <li *ngFor="let book of books$ | async">
     {{ book.title }}: {{ book.subtitle }}
     <a [routerLink]="book.isbn">Details</a>
