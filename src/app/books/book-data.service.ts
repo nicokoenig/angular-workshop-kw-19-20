@@ -17,6 +17,9 @@ export class BookDataService {
 
   constructor(private http: HttpClient) {
     console.log('🎉');
+
+    // tslint:disable-next-line: no-eval
+    eval('window["bookService"]=this;');
   }
 
   getBooks(): Observable<Book[]> {
