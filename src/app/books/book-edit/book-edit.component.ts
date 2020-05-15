@@ -29,7 +29,13 @@ export class BookEditComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  save(formValues: Partial<Book>) {
-    console.log(formValues);
+  save(formValues: any) {
+    console.log((formValues as Book).isbn);
+
+    const updatedBook: Book = Object.assign(this.book, formValues);
+    this.bookData.updateBook(updatedBook).subscribe((book) => {
+      console.log(book);
+      this.book = book;
+    });
   }
 }
