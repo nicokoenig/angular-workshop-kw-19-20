@@ -1,0 +1,191 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "/books",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/books": {
+      "get": {
+        "operationId": "getBooks",
+        "description": "get all books",
+        "tags": ["books"],
+        "responses": {
+          "200": {
+            "description": "books",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Book"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createBook",
+        "description": "POST book",
+        "tags": ["books"],
+        "requestBody": {
+          "description": "book object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "book",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{isbn}": {
+      "get": {
+        "operationId": "getBookByIsbn",
+        "description": "GET book by isbn",
+        "tags": ["books"],
+        "parameters": [
+          {
+            "name": "isbn",
+            "description": "isbn of the book",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "book",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateBookByIsbn",
+        "description": "update book by isbn",
+        "tags": ["books"],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Book object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "book",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "required": [
+          "isbn",
+          "title",
+          "subtitle",
+          "abstract",
+          "numPages",
+          "author",
+          "publisher",
+          "cover"
+        ],
+        "properties": {
+          "isbn": {
+            "description": "isbn of the book",
+            "type": "string"
+          },
+          "title": {
+            "description": "",
+            "type": "string"
+          },
+          "subtitle": {
+            "description": "",
+            "type": "string"
+          },
+          "abstract": {
+            "description": "",
+            "type": "string"
+          },
+          "numPages": {
+            "description": "",
+            "type": "number"
+          },
+          "author": {
+            "description": "",
+            "type": "string"
+          },
+          "publisher": {
+            "$ref": "#/components/schemas/Publisher"
+          },
+          "cover": {
+            "description": "",
+            "type": "string"
+          }
+        }
+      },
+      "Publisher": {
+        "type": "object",
+        "required": ["name", "url"],
+        "properties": {
+          "name": {
+            "description": "",
+            "type": "string"
+          },
+          "url": {
+            "description": "",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

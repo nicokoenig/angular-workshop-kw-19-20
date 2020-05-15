@@ -11,6 +11,7 @@ import { BookDataService } from './book-data.service';
 import { ConfirmCandeactivateGuard } from './confirm-candeactivate.guard';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookNewComponent } from './book-new/book-new.component';
+import { BooksApiModule, ApiConfiguration } from 'src/api';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,15 @@ import { BookNewComponent } from './book-new/book-new.component';
     BooksRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    BooksApiModule,
   ],
-  providers: [BookDataService, ConfirmCandeactivateGuard],
+  providers: [
+    {
+      provide: ApiConfiguration,
+      useValue: { rootUrl: 'http://localhost:4730' },
+    },
+    ConfirmCandeactivateGuard,
+  ],
   exports: [BooksComponent],
 })
 export class BooksModule {}
