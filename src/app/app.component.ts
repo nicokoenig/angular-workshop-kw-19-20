@@ -14,6 +14,14 @@ export class AppComponent {
 
   title = 'books-app';
 
+  result = `<h3>Tolle news!</h3><p>aklödsfjklajsdf</p>
+    <script>
+      alert('trolololol');
+
+    </script>
+
+  `;
+
   log(message: string) {
     console.log(message);
   }
